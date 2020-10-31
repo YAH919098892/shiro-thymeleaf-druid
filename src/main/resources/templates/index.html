@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<p th:text="${msg}"></p>
+<hr>
+<!--整合shiro 假如登录的用户有user:add的权限就显示a标签-->
+<div th:if="session.result2!=null">
+    <p th:text="session.result2"></p>
+    <a th:href="@{/login}">登录</a>
+</div>
+<div shiro:hasPermission="user:add">
+    <a th:href="@{/add}">add</a>
+</div>
+<a th:href="@{/updat}">updat</a>
+</body>
+</html>
